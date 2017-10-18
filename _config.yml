@@ -1,0 +1,25 @@
+safe: true
+markdown: kramdown
+highlighter: rouge
+permalink: /:title.html
+relative_permalinks: false
+
+default_theme: yandex2
+default_width: 1024
+default_ratio: 16x9
+default_lang: en
+
+presentation:
+    title: С чего начинается автоматизация
+    nda: false
+    lang: ru
+
+author:
+    name: Ханов Руслан
+    position: Разработчик
+    company:
+        name: Яндекс
+        url:  http://yandex.ru/
+
+fork_url: https://github.yandex-team.ru/evolaze/jekyller
+progress: false

@@ -1,0 +1,350 @@
+---
+
+layout: yandex2
+
+style: |
+    /* собственные стили можно писать здесь!! */
+    .pre_php pre code { font-size: 24px!important; line-height: 48px!important; }
+
+---
+
+# ![](themes/yandex2/images/logo-{{ site.presentation.lang }}.svg){:.logo}
+
+## {{ site.presentation.title }}
+{:.title}
+
+### ![](themes/yandex2/images/title-logo-{{ site.presentation.lang }}.svg){{ site.presentation.service }}
+
+{% if site.presentation.nda %}
+![](themes/yandex2/images/title-nda.svg)
+{:.nda}
+{% endif %}
+
+<div class="authors">
+{% if site.author %}
+<p>{{ site.author.name }}{% if site.author.position %}, {{ site.author.position }}{% endif %}</p>
+{% endif %}
+
+{% if site.author2 %}
+<p>{{ site.author2.name }}{% if site.author2.position %}, {{ site.author2.position }}{% endif %}</p>
+{% endif %}
+
+</div>
+
+## Исходный код (php)
+
+{:.pre_php.fullscreen}
+
+```php
+<?php
+
+protected static function resolveLinkFromAndTo(array $link, string $fromDir, string $toDir, string $useRoot = null)
+{
+    $fromDir = $useRoot ? self::buildRealpath(DIRECTORY_SEPARATOR, $useRoot) : $fromDir;
+    $result = [];
+    if (is_dir($fromDir . DIRECTORY_SEPARATOR . $link[self::NAME_FROM])) {
+        foreach (self::scanSubdir($fromDir, $link[self::NAME_FROM]) as $from) {
+            $result = array_merge_recursive($result, [
+                $fromDir . DIRECTORY_SEPARATOR . $from => $toDir . DIRECTORY_SEPARATOR . basename($from)
+            ]);
+        }
+    } else {
+        $result = array_merge_recursive($result, [
+            $fromDir . DIRECTORY_SEPARATOR . $link[self::NAME_FROM] => $toDir . DIRECTORY_SEPARATOR . $link[self::NAME_TO]
+        ]);
+    }
+    return $result;
+}
+```
+
+## Исходный код (php.2)
+{:.fullscreen}
+
+![](screenshots/php/automata-bootstrap-00.png)
+
+<figure markdown="1">
+Текст
+</figure>
+
+## Исходный код (bash)
+
+{:.fullscreen}
+
+```bash
+function bgo_export_name () {
+  local option_name=${1}
+  local default_value=${2}
+
+  [[ -z ${options[${option_name}]} ]] \
+  && export ${option_name}="${default_value}" \
+  || export ${option_name}="$(
+    eval declare -A option=${options[${option_name}]} 
+    && echo ${option}
+  )"
+}
+
+```
+
+## Исходный код (python)
+
+{:.fullscreen}
+
+```python
+import urllib2
+import cookielib
+from getpass import getpass
+import sys
+ 
+username = raw_input('Enter mobile number:')
+passwd = getpass()
+message = raw_input('Enter Message:')
+
+```
+
+## Исходный код (java)
+
+{:.fullscreen}
+
+```java
+
+package evolaze.java.Controller;
+
+import spark.Request;
+import spark.Response;
+
+public class DefaultController {
+
+    public static Object defaultAction(Request request, Response response) {
+        return "Hello, world";
+    }
+}
+
+```
+
+## Задачи
+
+**Минимальное использование сторонних зависимостей**
+
+1. подготовка окружения: env vars, credentials
+1. установка build\test tools: make, docker, selenium
+1. подготовка и запуск vm, containers
+1. deploy local, remote
+
+## Контакты 
+{:.contacts}
+
+{% if site.author %}
+
+<figure markdown="1">
+
+### {{ site.author.name }}
+
+{% if site.author.position %}
+{{ site.author.position }}
+{% endif %}
+
+</figure>
+
+{% endif %}
+
+{% if site.author2 %}
+
+<figure markdown="1">
+
+### {{ site.author2.name }}
+
+{% if site.author2.position %}
+{{ site.author2.position }}
+{% endif %}
+
+</figure>
+
+{% endif %}
+
+<!-- разделитель контактов -->
+-------
+
+<!-- left -->
+- {:.github}hanovruslan
+- {:.telegram}hanovruslan
+- {:.mail}hanov.ruslan@gmail.com
+ 
+<!-- right -->
+- {:.twitter}@hanovruslan
+- {:.facebook}hanov.ruslan
+
+
+## Название раздела
+{:.section}
+
+### Верхний колонтитул
+
+## Длинная цитата переносится на несколько строк
+{:.blockquote}
+
+### Источник
+
+## Заголовок
+
+Элементы появляются по очереди
+
+1. {:.next}Нумерованный список
+2. {:.next}Нумерованный список
+3. {:.next}Нумерованный список
+4. {:.next}Нумерованный список
+
+
+### Источник
+
+## Заголовок
+{:.images}
+
+![](themes/yandex2/images/images-one.svg)
+
+### Источник
+
+## Заголовок
+{:.images .two}
+
+![](themes/yandex2/images/images-two.svg)
+*Текст*
+
+![](themes/yandex2/images/images-two.svg)
+*Текст*
+
+### Источник
+
+## Заголовок
+{:.images .three}
+
+![](themes/yandex2/images/images-three.svg)
+*Текст*
+
+![](themes/yandex2/images/images-three.svg)
+*Текст*
+
+![](themes/yandex2/images/images-three.svg)
+*Текст*
+
+### Источник
+
+## Заголовок
+
+![](themes/yandex2/images/image-right.svg)
+{:.image-right}
+
+Основной текст
+
+**Ключевая мысль**
+
+- Маркированный список
+- Маркированный список
+
+1. Нумерованный список
+2. Нумерованный список
+
+### Источник
+
+## Заголовок
+
+<!-- библиотека пиктограмм https://patterns.yandex-team.ru/presentations?typeIn=icons -->
+
+![](themes/yandex2/images/icons.svg)
+{:.icon-left}
+
+Основной текст
+
+**Ключевая мысль**
+
+- Маркированный список
+- Маркированный список
+
+1. Нумерованный список
+2. Нумерованный список
+
+### Источник
+
+## Заголовок
+{:.icons}
+
+<!-- библиотека пиктограмм https://patterns.yandex-team.ru/presentations?typeIn=icons -->
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+### Источник
+
+## Заголовок
+{:.icons .four}
+
+<!-- библиотека пиктограмм https://patterns.yandex-team.ru/presentations?typeIn=icons -->
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+### Источник
+
+## Заголовок
+{:.icons .five}
+
+<!-- библиотека пиктограмм https://patterns.yandex-team.ru/presentations?typeIn=icons -->
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+![](themes/yandex2/images/icons.svg)
+*Текст*
+
+### Источник
+
+## Заголовок будет скрыт
+{:.fullscreen}
+
+![](themes/yandex2/images/images-fullscreen.svg)
+
+## Заголовок будет скрыт
+{:.fullscreen}
+
+![](themes/yandex2/images/images-fullscreen.svg)
+
+<figure markdown="1">
+Текст
+</figure>
+
+## Таблица
+
+|  Locavore     |  Umami       |  Helvetica |  Vegan     |
++---------------|--------------|------------|------------+
+|  Fingerstache<br/>The second line |  Kale        |  Chips     |  Keytar    |
+|  Sriracha     |  Gluten-free |  Ennui     |  Keffiyeh  |
+|  Thundercats  |  Jean        |  Shorts    |  Biodiesel |
+|* Terry        |* Richardson  |* Swag      |* Blog      |
+
+Текст
+
+### Источник
+
